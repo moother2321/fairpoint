@@ -98,7 +98,7 @@
                             </div>
                             <div>
                             <div class="versionBlock">
-                                    <label for="client">Web App Version</label>
+                                    <label for="client">Version</label>
                                     <div style="position: relative;">
                                         <select id="client" name="client" >
                                             <option value="preferred" selected=""> Default</option>
@@ -222,7 +222,7 @@ export default {
   display: inline-block;
   color:  black !important;
   /* background-color: ; */
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 500;
   cursor: pointer;
   z-index: 9999;
